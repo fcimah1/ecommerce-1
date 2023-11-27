@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Box from "../../Box/Box";
 import { useParams } from "react-router-dom";
+import '../../Categories/category.css'
 
 export default function CategoryView() {
     const { categoryName } = useParams()
@@ -12,7 +13,7 @@ export default function CategoryView() {
     }, [categoryName])
     return (
         <>
-            <h1 className="text-center my-5">{categoryName} Products</h1>
+            <h1 className="text-center my-5 category">{categoryName} Products</h1>
             <div className="container">
                 <div className="row">
                     {
