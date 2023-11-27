@@ -1,11 +1,15 @@
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Categories from "../Categories/Categories";
 import { useRef, useState } from "react";
+import { useRecoilValue } from "recoil";
+import cartDetaials from "../../Atoms/Cart.atom";
 
 export default function Navbar() {
     const inpText = useRef()
     const [value, setValue] = useState("")
     // console.log(inpText)
+    const setCart = useRecoilValue(cartDetaials)
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-primary">
@@ -32,6 +36,13 @@ export default function Navbar() {
                             }} type="search" placeholder="Search" aria-label="Search" />
                             <Link to={(value !== "") ? `search/${inpText.current.value}`
                                 : null} className="btn btn-secondary" type="submit">Search</Link>
+                        </div>
+                        <div className="cart">
+                            <Link to="/cart" className="text-dark fs-3 ms-4"
+                            onClick={console.log(setCart)}>
+                                <AiOutlineShoppingCart />
+                                <span className="text-danger">{setCart.length }</span>
+                            </Link>
                         </div>
                     </div>
                 </div>
