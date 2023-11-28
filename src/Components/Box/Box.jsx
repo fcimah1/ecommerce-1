@@ -1,37 +1,73 @@
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import '../Box/Box.css'
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import cartDetaials from "../../Atoms/Cart.atom";
 export default function Box({ id, img, title, desc, price }) {
-    const [, setCart] = useRecoilState(cartDetaials)
-    const add = (id) => {
+    const [cart, setCart] = useRecoilState(cartDetaials)
+    const cardValues = useRecoilValue(cartDetaials)
 
-        setCart((cartDetaials) => [
-            ...cartDetaials,
-            {
-                countitiy: 1,
-                id,
-                img,
-                title
-            },
-        ])
 
-        console.log(id);
+
+    // const add = (id) => {
+    //     cardValues.map((value) => {
+    //         if (id === value.id) {
+    //             value.countitiy += 1;
+    //             setCart([...cart, value]);
+    //             console.log(value.countitiy);
+    //         }
+    //     }
+    //     )
+    // }
+    // const remove = (id) => {
+    //     cardValues.map((value) => {
+    //         if (id === value.id) {
+    //             value.countitiy -= 1;
+    //             setCart([...cart, value]);
+    //             console.log(value.countitiy);
+    //         }
+    //     }
+    //     )
+    // }
+
+    // const handleAddToCart = () => {
+    //     const updatedCart = { ...cart }
+    //     console.log(updatedCart.hasOwnProperty(id));
+    //     if (updatedCart.hasOwnProperty(id)) {
+    //         updatedCart[id]++
+    //     } else {
+    //         updatedCart[id] = 1
+    //     }
+    //     setCart(updatedCart)
+    // }
+    function operationAdd() {
+        setCart([...cart, {
+            id,
+            countitiy: 1,
+            img,
+            title,
+            desc
+        }])
     }
-    // function replaceItemAtIndex(arr, index, newValue) {
-    //     return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
-    // }
-    // function addToCart(index) {
-    //     (!cart.id) ? [...cartDetaials, setCart({
-    //         id,
-    //         img,
-    //         title,
-    //         desc,
-    //         price,
-    //         countity: 1
-    //     })] : [...cartDetaials.slice(0, index), cartDetaials.countity++, ...cartDetaials.slice(index + 1)];
-    // }
+
+    function addToCart(index) {
+        console.log(index);
+        console.log(cardValues.length);
+        if (cardValues.length > 0) {
+            cardValues.map((value) => {
+                if (index === value.id) {
+                    console.log(value.countitiy);
+                    setCart([...cart.slice(0, index), ...cart.slice(index + 1)]) 
+                    // value.countitiy += 1;
+                    // setCart([...cart, value]);
+                    console.log(value.countitiy);
+                } else {
+                    operationAdd()
+                }
+            })
+        } else {
+            operationAdd()
+        }
+    }
     return (
         <div className="card">
             <div className="img">
@@ -41,10 +77,13 @@ export default function Box({ id, img, title, desc, price }) {
                 <h5 className="card-title">{title}</h5>
                 <p className="card-text">price: ${price} </p>
                 <p className="card-text">{desc.split(" ").slice(1, 6).join(" ")}</p>
-                <Link to={`/productDetails/${id}`} className="btn btn-primary">Show Details</Link>
-                <p className="ms-4 fs-3" to='/cart' onClick={() => { add(id) }}>
-                    <AiOutlineShoppingCart />
-                </p>
+                <div className='d-flex justify-content-between align-items-center'>
+                    <Link to={`/productDetails/${id}`} className="btn btn-primary">Show Details</Link>
+                    <button className="btn btn-success"
+                        to='/cart' onClick={() => addToCart(id)}>
+                        Add to Cart
+                    </button>
+                </div>
             </div>
         </div>
 
