@@ -4,41 +4,10 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import cartDetaials from "../../Atoms/Cart.atom";
 export default function Box({ id, img, title, desc, price }) {
     const [cart, setCart] = useRecoilState(cartDetaials)
-    const cardValues = useRecoilValue(cartDetaials)
+    const cartValues = useRecoilValue(cartDetaials)
 
 
 
-    // const add = (id) => {
-    //     cardValues.map((value) => {
-    //         if (id === value.id) {
-    //             value.countitiy += 1;
-    //             setCart([...cart, value]);
-    //             console.log(value.countitiy);
-    //         }
-    //     }
-    //     )
-    // }
-    // const remove = (id) => {
-    //     cardValues.map((value) => {
-    //         if (id === value.id) {
-    //             value.countitiy -= 1;
-    //             setCart([...cart, value]);
-    //             console.log(value.countitiy);
-    //         }
-    //     }
-    //     )
-    // }
-
-    // const handleAddToCart = () => {
-    //     const updatedCart = { ...cart }
-    //     console.log(updatedCart.hasOwnProperty(id));
-    //     if (updatedCart.hasOwnProperty(id)) {
-    //         updatedCart[id]++
-    //     } else {
-    //         updatedCart[id] = 1
-    //     }
-    //     setCart(updatedCart)
-    // }
     function operationAdd() {
         setCart([...cart, {
             id,
@@ -49,21 +18,25 @@ export default function Box({ id, img, title, desc, price }) {
         }])
     }
 
-    function addToCart(index) {
-        console.log(index);
-        console.log(cardValues.length);
-        if (cardValues.length > 0) {
-            cardValues.map((value) => {
-                if (index === value.id) {
-                    console.log(value.countitiy);
-                    setCart([...cart.slice(0, index), ...cart.slice(index + 1)]) 
-                    // value.countitiy += 1;
-                    // setCart([...cart, value]);
-                    console.log(value.countitiy);
-                } else {
-                    operationAdd()
+    function addToCart(id) {
+        let check = 0
+        if (cartValues.length > 0) {
+            let i = 0
+            for (; i < cartValues.length; i++) {
+                if (id === cartValues[i].id) {
+                    check = 1
+                    break
                 }
-            })
+            }
+            let cunrrentProduct = cartValues[i]
+            if (check === 1) {
+                console.log(cunrrentProduct.id + " = " + id)
+                console.log(i);
+                setCart([...cart.slice(0, i), { ...cunrrentProduct, countitiy: +cunrrentProduct.countitiy + 1 }, ...cart.slice(i + 1)])
+                console.log(cart);
+            } else {
+                operationAdd()
+            }
         } else {
             operationAdd()
         }

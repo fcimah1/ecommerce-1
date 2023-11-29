@@ -8,8 +8,7 @@ import cartDetaials from "../../Atoms/Cart.atom";
 export default function Navbar() {
     const inpText = useRef()
     const [value, setValue] = useState("")
-    // console.log(inpText)
-    const setCart = useRecoilValue(cartDetaials)
+    const cart = useRecoilValue(cartDetaials)
     return (
         <>
             <nav className="navbar navbar-expand-lg bg-primary">
@@ -39,9 +38,9 @@ export default function Navbar() {
                         </div>
                         <div className="cart">
                             <Link to="/cart" className="text-dark fs-3 ms-4"
-                            onClick={console.log(setCart)}>
+                            onClick={console.log(cart)}>
                                 <AiOutlineShoppingCart />
-                                <span className="text-danger">{setCart.length }</span>
+                                <span className="text-danger">{cart.length }</span>
                             </Link>
                         </div>
                     </div>
