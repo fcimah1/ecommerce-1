@@ -25,9 +25,9 @@ export default function Cart() {
                     </thead>
                     <tbody>
                         {
-                            cartValues?.map(product => {
+                            cartValues?.map((product, index) => {
                                 return (
-                                    <tr className="" key={product.id}>
+                                    <tr className="" key={index}>
                                         <th scope="row">{product.id}</th>
                                         <td><img src={product.img} className="img" alt="product" /></td>
                                         <td>{product.title}</td>
@@ -35,11 +35,11 @@ export default function Cart() {
                                         <td>${product.price}</td>
                                         <td >
                                             {/* {product.countity} */}
-                                            <button onClick={() => setValue(inpVal.current.value--)}>-</button>
-                                            <input ref={inpVal} className="" type='number' value={product.countity+value} />
+                                            <button onClick={() => setValue(--inpVal.current.value)}>-</button>
+                                            <input ref={inpVal} className="" type='number' value={product.countity + value} />
                                             <button onClick={() => setValue(inpVal.current.value++)}>+</button>
                                         </td>
-                                        <td>${product.countity * product.price}</td>
+                                        <td>${(product.countity+value) * product.price}</td>
                                     </tr>
                                 )
                             })
