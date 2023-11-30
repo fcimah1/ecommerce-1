@@ -11,10 +11,11 @@ export default function Box({ id, img, title, desc, price }) {
     function operationAdd() {
         setCart([...cart, {
             id,
-            countitiy: 1,
+            countity: 1,
             img,
             title,
-            desc
+            desc,
+            price
         }])
     }
 
@@ -31,9 +32,7 @@ export default function Box({ id, img, title, desc, price }) {
             let cunrrentProduct = cartValues[i]
             if (check === 1) {
                 console.log(cunrrentProduct.id + " = " + id)
-                console.log(i);
-                setCart([...cart.slice(0, i), { ...cunrrentProduct, countitiy: +cunrrentProduct.countitiy + 1 }, ...cart.slice(i + 1)])
-                console.log(cart);
+                setCart([...cart.slice(0, i), { ...cunrrentProduct, countity: +cunrrentProduct.countity + 1 }, ...cart.slice(i + 1)])
             } else {
                 operationAdd()
             }
