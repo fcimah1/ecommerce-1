@@ -36,7 +36,7 @@ export default function Cart() {
                                         <td >
                                             {/* {product.countity} */}
                                             <button onClick={() => setValue(inpVal.current.value--)}>-</button>
-                                            <input ref={inpVal} className="" type='number' value={value} />
+                                            <input ref={inpVal} className="" type='number' value={product.countity+value} />
                                             <button onClick={() => setValue(inpVal.current.value++)}>+</button>
                                         </td>
                                         <td>${product.countity * product.price}</td>
