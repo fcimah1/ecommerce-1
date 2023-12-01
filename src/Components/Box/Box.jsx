@@ -31,7 +31,6 @@ export default function Box({ id, img, title, desc, price }) {
             }
             let cunrrentProduct = cartValues[i]
             if (check === 1) {
-                console.log(cunrrentProduct.id + " = " + id)
                 setCart([...cart.slice(0, i), { ...cunrrentProduct, countity: +cunrrentProduct.countity + 1 }, ...cart.slice(i + 1)])
             } else {
                 operationAdd()

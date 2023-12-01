@@ -1,12 +1,45 @@
-import { useRecoilValue } from "recoil"
+import { useRecoilState, useRecoilValue } from "recoil"
 import cartDetaials from "../../../Atoms/Cart.atom"
 import './cart.css'
-import { useRef, useState } from "react"
-export default function Cart() {
+export default function Cart({ id, img, title, desc, price }) {
     const cartValues = useRecoilValue(cartDetaials)
-    let inpVal = useRef()
-    let [value, setValue] = useState(0)
-    console.log(value)
+    const [cart, setCart] = useRecoilState(cartDetaials)
+
+    function operationAdd() {
+        setCart([...cart, {
+            id,
+            countity: 1,
+            img,
+            title,
+            desc,
+            price
+        }])
+    }
+
+    function operationOfCount(id, operation) {
+        let check = 0
+        if (cartValues.length > 0) {
+            let i = 0
+            for (; i < cartValues.length; i++) {
+                if (id === cartValues[i].id) {
+                    check = 1
+                    break
+                }
+            }
+            let cunrrentProduct = cartValues[i]
+            if (check === 1) {
+                if (operation === "+") {
+                    setCart([...cart.slice(0, i), { ...cunrrentProduct, countity: +cunrrentProduct.countity + 1 }, ...cart.slice(i + 1)])
+                } else if (operation === "-") {
+                    setCart([...cart.slice(0, i), { ...cunrrentProduct, countity: +cunrrentProduct.countity - 1 }, ...cart.slice(i + 1)])
+                }
+            } else {
+                operationAdd()
+            }
+        } else {
+            operationAdd()
+        }
+    }
 
     return (
         <>
@@ -25,21 +58,20 @@ export default function Cart() {
                     </thead>
                     <tbody>
                         {
-                            cartValues?.map((product, index) => {
+                            cartValues?.map((product) => {
                                 return (
-                                    <tr className="" key={index}>
+                                    <tr className="" key={product.id}>
                                         <th scope="row">{product.id}</th>
                                         <td><img src={product.img} className="img" alt="product" /></td>
                                         <td>{product.title}</td>
                                         <td>{product.desc.split(" ").slice(0, 8).join(" ")}...</td>
                                         <td>${product.price}</td>
                                         <td >
-                                            {/* {product.countity} */}
-                                            <button onClick={() => setValue(--inpVal.current.value)}>-</button>
-                                            <input ref={inpVal} className="" type='number' value={product.countity + value} />
-                                            <button onClick={() => setValue(inpVal.current.value++)}>+</button>
+                                            <button onClick={() => { operationOfCount(product.id, "-") }}>- </button>
+                                            <span className="" > {product.countity} </span>
+                                            <button onClick={() => operationOfCount(product.id, "+")}> +</button>
                                         </td>
-                                        <td>${(product.countity+value) * product.price}</td>
+                                        <td>${(product.countity) * product.price}</td>
                                     </tr>
                                 )
                             })
