@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Box from "../../Box/Box";
 import { useParams } from "react-router-dom";
 import '../../Categories/category.css'
+import "../../../api/api.json"
 
 export default function CategoryView() {
     const { categoryName } = useParams()

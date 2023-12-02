@@ -6,6 +6,7 @@ import CategoryView from './Components/Pages/Category/CategoryView';
 import SearchResult from './Components/Pages/SearchResult/SearchResult';
 import ProductDetails from './Components/Pages/ProductDetails/ProductDetails';
 import Cart from './Components/Pages/Cart/Cart';
+import Categories from './Components/Categories/Categories';
 
 function App() {
   return (

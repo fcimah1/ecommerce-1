@@ -12,7 +12,7 @@ export default function Categories() {
         <ul className="dropdown-menu">
             {
                 category.map((categ, id) => {
-                    return (<li key={id}><Link key={id} className="dropdown-item category" to={`category/${categ}`}>{categ}</Link></li>)
+                    return (<li key={id}><Link key={id} className=" dropdown-item category" to={`category/${categ}`}>{categ}</Link></li>)
                 })
             }
         </ul>

@@ -1,9 +1,10 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Categories from "../Categories/Categories";
 import { useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 import cartDetaials from "../../Atoms/Cart.atom";
+import './navbar.css'
 
 export default function Navbar() {
     const inpText = useRef()
@@ -13,19 +14,19 @@ export default function Navbar() {
         <>
             <nav className="navbar navbar-expand-lg bg-primary">
                 <div className="container">
-                    <Link className="navbar-brand text-dark fw-bold fs-3" to="#">Ecommerce</Link>
+                    <Link className="navbar-brand text-white fw-bold fs-3" to="/">Ecommerce</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav m-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+                                <NavLink className="nav-link" to="/">Home</NavLink>
                             </li>
                             <li className="nav-item dropdown">
-                                <Link className="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <NavLink className="nav-link dropdown-toggle" to="/categories" data-bs-toggle="dropdown" aria-expanded="false">
                                     Categories
-                                </Link>
+                                </NavLink>
                                 {<Categories />}
                             </li>
                         </ul>
@@ -37,10 +38,10 @@ export default function Navbar() {
                                 : null} className="btn btn-secondary" type="submit">Search</Link>
                         </div>
                         <div className="cart">
-                            <Link to="/cart" className="text-dark fs-3 ms-4"
-                            onClick={console.log(cart)}>
+                            <Link to="/cart" className="text-dark "
+                                onClick={console.log(cart)}>
                                 <AiOutlineShoppingCart />
-                                <span className="text-danger">{cart.length }</span>
+                                <p className="number-of-products">{cart.length}</p>
                             </Link>
                         </div>
                     </div>
