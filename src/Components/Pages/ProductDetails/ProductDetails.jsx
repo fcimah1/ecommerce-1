@@ -1,7 +1,11 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useEffect, useRef, useState } from "react"
+import { Link, useParams } from "react-router-dom"
+import { useRecoilState, useRecoilValue } from "recoil";
+import cartDetaials from "../../../Atoms/Cart.atom";
+import './productDetails.css'
 
-export default function ProductDetails() {
+
+export default function ProductDetails({ id, img, title, desc, price }) {
     const { productId } = useParams()
     const [product, setProduct] = useState([])
     useEffect(() => {
@@ -9,13 +13,61 @@ export default function ProductDetails() {
             .then(res => res.json())
             .then(data => setProduct(data));
     }, [productId])
+    console.log(product);
+    const cartValues = useRecoilValue(cartDetaials)
+    const [cart, setCart] = useRecoilState(cartDetaials)
+
+    function operationAdd() {
+        setCart([...cart, {
+            id: product?.id,
+            countity: 1,
+            img: product?.thumbnail,
+            title: product?.title,
+            desc: product?.description,
+            price: product?.price
+        }])
+    }
+
+    function addToCart(id) {
+        let check = 0
+        if (cartValues.length > 0) {
+            let i = 0
+            for (; i < cartValues.length; i++) {
+                if (id === cartValues[i].id) {
+                    check = 1
+                    break
+                }
+            }
+            let cunrrentProduct = cartValues[i]
+            if (check === 1) {
+                setCart([...cart.slice(0, i), { ...cunrrentProduct, countity: +cunrrentProduct.countity + 1 }, ...cart.slice(i + 1)])
+                localStorage.setItem("cart", cart);
+            } else {
+                operationAdd()
+            }
+        } else {
+            operationAdd()
+        }
+    }
+    let imgSrcOfficial = useRef()
     return (
         <>
             <div className="container mt-5">
                 <div className="row">
                     <div className="col-md-12 col-lg-5">
                         <div className="img">
-                            <img src={product?.thumbnail} alt={product.title} />
+                            <img className="current-image" ref={imgSrcOfficial} src={ product?.thumbnail} alt={product.title} />
+                        </div>
+                        <div className="allImages">
+                            {product?.images?.map(
+                                (image, index) => (
+                                    <img onClick={() => {
+                                        imgSrcOfficial.current.src = image
+                                    }}
+                                        key={index} src={image} alt={product.title} />
+
+                                ))}
+
                         </div>
                     </div>
                     <div className="col-md-12 col-lg-7">
@@ -25,6 +77,7 @@ export default function ProductDetails() {
                         <p>Discount: {product?.discountPercentage} %</p>
                         <p>Rating: {product?.rating} of 5</p>
                         <p>Description: {product?.description}</p>
+                        <Link to="/cart" onClick={() => addToCart(product.id)} className="btn btn-primary">Add To Cart</Link>
                     </div>
                 </div>
             </div>
