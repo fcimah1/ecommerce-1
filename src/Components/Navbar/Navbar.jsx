@@ -24,7 +24,7 @@ export default function Navbar() {
                                 <NavLink className="nav-link" to="/">Home</NavLink>
                             </li>
                             <li className="nav-item dropdown">
-                                <NavLink className="nav-link dropdown-toggle" to="/categories" data-bs-toggle="dropdown" aria-expanded="false">
+                                <NavLink className="nav-link categories" to="/categories" >
                                     Categories
                                 </NavLink>
                                 {<Categories />}

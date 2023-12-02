@@ -32,7 +32,7 @@ export default function Cart({ id, img, title, desc, price }) {
                 if (operation === "+") {
                     setCart([...cart.slice(0, i), { ...cunrrentProduct, countity: +cunrrentProduct.countity + 1 }, ...cart.slice(i + 1)])
                     localStorage.setItem("cart", cart);
-                } else if (operation === "-") {
+                } else if (operation === "-" && cartValues[i].countity > 1) {
                     setCart([...cart.slice(0, i), { ...cunrrentProduct, countity: +cunrrentProduct.countity - 1 }, ...cart.slice(i + 1)])
                     localStorage.setItem("cart", cart);
 
