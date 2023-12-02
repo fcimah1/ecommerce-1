@@ -42,9 +42,9 @@ export default function Box({ id, img, title, desc, price }) {
     }
     return (
         <div className="card">
-            <div to='/cart' onClick={() => addToCart(id)} className="img">
+            <div  className="img">
                 <img src={img} className="card-img-top" alt={title} />
-                <div className="addCart w-100 ">Add To Cart</div>
+                <div to='/cart' onClick={() => addToCart(id)} className="addCart w-100 ">Add To Cart</div>
             </div>
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
