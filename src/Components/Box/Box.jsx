@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import '../Box/Box.css'
 import { useRecoilState, useRecoilValue } from "recoil";
 import cartDetaials from "../../Atoms/Cart.atom";
+import { ToastContainer, toast } from 'react-toastify';
 export default function Box({ id, img, title, desc, price }) {
     const [cart, setCart] = useRecoilState(cartDetaials)
     const cartValues = useRecoilValue(cartDetaials)
+
 
 
 
@@ -42,9 +44,30 @@ export default function Box({ id, img, title, desc, price }) {
     }
     return (
         <div className="card">
-            <div  className="img">
+            < ToastContainer />
+            <div className="img">
                 <img src={img} className="card-img-top" alt={title} />
-                <div to='/cart' onClick={() => addToCart(id)} className="addCart w-100 ">Add To Cart</div>
+                <div to='/cart'
+                    onClick={() => {
+                        addToCart(id);
+                        toast("Added Successfully",
+                            {
+                                type: "success",
+                                position: "top-center",
+                                autoClose: 1000,
+                                hideProgressBar: false,
+                                closeOnClick: true,
+                                pauseOnHover: true, // pause the toast r
+                                draggable: true,
+                                progress: undefined,
+                            }
+                        )
+                    }
+
+                    }
+                    className="addCart w-100 ">Add To Cart
+
+                </div>
             </div>
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>

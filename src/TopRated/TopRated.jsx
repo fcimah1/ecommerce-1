@@ -1,26 +1,22 @@
-import Box from "../../Box/Box";
 import React, { useEffect, useState } from 'react'
-import Slider from "../../Slider/Slider";
-import './home.css'
-import TopRated from "../../../TopRated/TopRated";
-import NewArrivals from "../../NewArrivals/NewArrivals";
+import Box from '../Components/Box/Box';
 
-export default function Home() {
+export default function TopRated() {
     const [product, setProduct] = useState([])
     useEffect(() => {
         fetch('https://dummyjson.com/products')
             .then(res => res.json())
             .then(data => setProduct(data.products))
     }, [])
+    console.log(product);
     return (
         <>
-            <Slider />
-            <div className="container pt-5 ">
-                <h2 className=" text-center head my-5 text-primary ">Important Products</h2>
+            <div className="container my-5">
+                <h2 className=" text-center head pb-2 my-5 text-primary ">Top Rate Products</h2>
                 <div className="row pt-5">
                     {(product !== "") ?
-                        product.map(({ price, id, title, thumbnail, description }, index) => {
-                            if (index < 8) {
+                        product.map(({ price, id, title, thumbnail, description, rating }, index) => {
+                            if (index < 8 && rating > 4) {
                                 return (
                                     <div key={id} className="col-md-6 col-lg-4 col-xl-3 mb-3" >
                                         <Box id={id} img={thumbnail} title={title} desc={description} price={price} />
@@ -31,8 +27,6 @@ export default function Home() {
                     }
                 </div>
             </div>
-            <TopRated />
-            <NewArrivals />
         </>
     )
 }

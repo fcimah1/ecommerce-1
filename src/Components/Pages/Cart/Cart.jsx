@@ -67,6 +67,7 @@ export default function Cart({ id, img, title, desc, price }) {
                     </thead>
                     <tbody>
                         {
+
                             cartValues?.map((product, index) => {
                                 return (
                                     <tr className="" key={product.id}>

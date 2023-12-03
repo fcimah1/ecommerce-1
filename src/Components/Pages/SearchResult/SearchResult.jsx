@@ -12,7 +12,7 @@ export default function SearchResult() {
     }, [value])
     return (
         <>
-            <h1 className="text-center my-5">Search Result</h1>
+            <h2 className="text-center head my-5">Search Result</h2>
             <div className="container">
                 {(data.length > 0) ?
 

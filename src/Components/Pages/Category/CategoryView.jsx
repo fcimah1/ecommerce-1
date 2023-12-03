@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Box from "../../Box/Box";
 import { useParams } from "react-router-dom";
 import '../../Categories/category.css'
+import "../Home/home.css"
 import "../../../api/api.json"
 
 export default function CategoryView() {
@@ -14,7 +15,7 @@ export default function CategoryView() {
     }, [categoryName])
     return (
         <>
-            <h1 className="text-center my-5 category">{categoryName} Products</h1>
+            <h2 className="text-center head my-5 category">{categoryName} Products</h2>
             <div className="container">
                 <div className="row">
                     {

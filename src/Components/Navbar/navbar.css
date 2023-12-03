@@ -4,7 +4,7 @@ nav .container ul li {
 
 nav .container ul li a.active {
     color: black !important;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 nav .container .cart a {
