@@ -22,6 +22,7 @@ export default function TopRated() {
                                         <Box id={id} img={thumbnail} title={title} desc={description} price={price} />
                                     </div>)
                             }
+                            return null
                         }) :
                         <h2 className="text-center">Loading................</h2>
                     }

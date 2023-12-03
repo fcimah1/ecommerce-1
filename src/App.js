@@ -7,6 +7,8 @@ import SearchResult from './Components/Pages/SearchResult/SearchResult';
 import ProductDetails from './Components/Pages/ProductDetails/ProductDetails';
 import Cart from './Components/Pages/Cart/Cart';
 import 'react-toastify/dist/ReactToastify.css';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 
 function App() {

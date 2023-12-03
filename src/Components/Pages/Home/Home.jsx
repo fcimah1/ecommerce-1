@@ -4,6 +4,7 @@ import Slider from "../../Slider/Slider";
 import './home.css'
 import TopRated from "../../../TopRated/TopRated";
 import NewArrivals from "../../NewArrivals/NewArrivals";
+import SwipperSlides from "../../SwipperSlides/SwipperSlides";
 
 export default function Home() {
     const [product, setProduct] = useState([])
@@ -26,6 +27,7 @@ export default function Home() {
                                         <Box id={id} img={thumbnail} title={title} desc={description} price={price} />
                                     </div>)
                             }
+                            return null
                         }) :
                         <h2 className="text-center">Loading................</h2>
                     }
@@ -33,6 +35,8 @@ export default function Home() {
             </div>
             <TopRated />
             <NewArrivals />
+            <SwipperSlides />
+
         </>
     )
 }
