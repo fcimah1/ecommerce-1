@@ -17,8 +17,8 @@ export default function Navbar() {
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav m-auto mb-2 mb-lg-0">
+                    <div className="collapse navbar-collapse d-flex align-items-center" id="navbarSupportedContent">
+                        <ul className="navbar-nav m-auto mb-2">
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/">Home</NavLink>
                             </li>
@@ -44,7 +44,7 @@ export default function Navbar() {
                                 setValue(inpText.current.value)
                             }} type="search" placeholder="Search" aria-label="Search" />
                             <Link to={(value !== "") ? `search/${inpText.current.value}`
-                                : null} className="btn btn-secondary" type="submit">Search</Link>
+                                : null} className="btn btn-secondary search" type="submit">Search</Link>
                         </div>
                         <div className="cart">
                             <Link to="/cart" className="text-dark "

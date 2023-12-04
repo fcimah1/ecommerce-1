@@ -2,7 +2,10 @@ import { Link } from 'react-router-dom';
 import '../Box/Box.css'
 import { useRecoilState, useRecoilValue } from "recoil";
 import cartDetaials from "../../Atoms/Cart.atom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+import toast, { Toaster } from 'react-hot-toast';
+
+const notify = () => toast.success('Added Succesfully.');
 export default function Box({ id, img, title, desc, price }) {
     const [cart, setCart] = useRecoilState(cartDetaials)
     const cartValues = useRecoilValue(cartDetaials)
@@ -45,23 +48,26 @@ export default function Box({ id, img, title, desc, price }) {
     return (
         <div className="card">
             < ToastContainer />
+            <Toaster />
             <div className="img">
                 <img src={img} className="card-img-top" alt={title} />
                 <div to='/cart'
                     onClick={() => {
+
+                        notify();
                         addToCart(id);
-                        toast("Added Successfully",
-                            {
-                                type: "success",
-                                position: "top-center",
-                                autoClose: 1000,
-                                hideProgressBar: false,
-                                closeOnClick: true,
-                                pauseOnHover: true, // pause the toast r
-                                draggable: true,
-                                progress: undefined,
-                            }
-                        )
+                        // toast("Added Successfully",
+                        //     {
+                        //         type: "success",
+                        //         position: "top-center",
+                        //         autoClose: 1000,
+                        //         hideProgressBar: false,
+                        //         closeOnClick: true,
+                        //         pauseOnHover: true, // pause the toast r
+                        //         draggable: true,
+                        //         progress: undefined,
+                        //     }
+                        // )
                     }
 
                     }
