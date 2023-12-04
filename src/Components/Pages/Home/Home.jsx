@@ -16,7 +16,7 @@ export default function Home() {
     return (
         <>
             <Slider />
-            <div className="container pt-5 ">
+            <div className="container  pt-5 ">
                 <h2 className=" text-center head my-5 text-primary ">Important Products</h2>
                 <div className="row pt-5">
                     {(product !== "") ?

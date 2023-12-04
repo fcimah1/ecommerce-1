@@ -25,7 +25,7 @@ export default function App() {
                 pagination={{
                     clickable: true,
                 }}
-                modules={[EffectFade, Navigation, Pagination]}
+                modules={[EffectFade, Navigation, Pagination, Autoplay]}
                 className="mySwiper"
             >
                 <SwiperSlide>

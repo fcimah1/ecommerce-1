@@ -15,7 +15,7 @@ export default function NewArrivals() {
                 <div className="row pt-5">
                     {(product !== "") ?
                         product.map(({ id, title, thumbnail }, index) => {
-                            if (index % 5 == 0) {
+                            if (index % 5 === 0) {
                                 return (
                                     <div key={id} className={`col-md-6 col-lg-4 col-xl-3 mb-3`} >
                                         <div id="img">
@@ -25,6 +25,7 @@ export default function NewArrivals() {
                                             <h4 id='title' className=' text-center mt-3'>{title}</h4></Link>
                                     </div>)
                             }
+                            return null;
                         }) :
                         <h2 className="text-center">Loading................</h2>
                     }

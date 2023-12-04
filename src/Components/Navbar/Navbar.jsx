@@ -1,6 +1,5 @@
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link, NavLink } from "react-router-dom";
-import Categories from "../Categories/Categories";
 import { useRef, useState } from "react";
 import { useRecoilValue } from "recoil";
 import cartDetaials from "../../Atoms/Cart.atom";
