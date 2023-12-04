@@ -7,6 +7,7 @@ import SearchResult from './Components/Pages/SearchResult/SearchResult';
 import ProductDetails from './Components/Pages/ProductDetails/ProductDetails';
 import Cart from './Components/Pages/Cart/Cart';
 import 'react-toastify/dist/ReactToastify.css';
+import AboutUs from './Components/Pages/AboutUs/AboutUs';
 
 
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='search/:value' element={<SearchResult />} />
         <Route path='productDetails/:productId' element={<ProductDetails />} />
         <Route path='cart' element={<Cart />} />
+        <Route path='about' element={<AboutUs />} />
       </Routes>
     </>
   );

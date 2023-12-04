@@ -1,8 +1,9 @@
 import "./Slider.css"
-import imgFirst from '../../images/img-1.jpeg';
-import imgSecond from '../../images/img-2.jpeg';
-import imgThird from '../../images/img-3.jpeg';
+import imgThird from '../../images/img-2.jpeg';
+import imgFirst from '../../images/img-3.jpeg';
+import imgSecond from '../../images/au-banner_1920x.jpg';
 import Categories from "../Categories/Categories";
+
 export default function Slider() {
     return (
         <>
