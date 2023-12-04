@@ -2,6 +2,7 @@ import { useRecoilState, useRecoilValue } from "recoil"
 import cartDetaials from "../../../Atoms/Cart.atom"
 import './cart.css'
 import { Link } from "react-router-dom"
+import toast, { Toaster } from "react-hot-toast"
 export default function Cart({ id, img, title, desc, price }) {
     const cartValues = useRecoilValue(cartDetaials)
     const [cart, setCart] = useRecoilState(cartDetaials)
@@ -53,6 +54,7 @@ export default function Cart({ id, img, title, desc, price }) {
     return (
         <>
             <div className="container mt-5">
+                <Toaster />
                 <table className="table table-hover">
                     <thead>
                         <tr>
@@ -72,7 +74,10 @@ export default function Cart({ id, img, title, desc, price }) {
                                 return (
                                     <tr className="" key={product.id}>
                                         <th className="" title="delete from cart" scope="row">
-                                            <div onClick={() => { operationDelete(index) }} className="text-danger delete">X</div>
+                                            <div onClick={() => {
+                                                operationDelete(index)
+                                                toast.success('Deleted Successfully')
+                                            }} className="text-danger delete">X</div>
                                         </th>
                                         <td>
                                             <Link to={`/productDetails/${product.id}`}>

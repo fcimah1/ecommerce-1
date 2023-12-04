@@ -10,8 +10,8 @@ export default function NewArrivals() {
     }, [])
     return (
         <>
-            <div className="container pt-5 my-5">
-                <h2 className="  pb-2 my-5 text-danger ">New Arrivals</h2>
+            <div className="container my-5">
+                <h2 className="  text-danger ">New Arrivals</h2>
                 <div className="row pt-5">
                     {(product !== "") ?
                         product.map(({ id, title, thumbnail }, index) => {
