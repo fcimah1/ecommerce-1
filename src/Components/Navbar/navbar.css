@@ -4,7 +4,7 @@ nav .container ul li {
 
 nav .container ul li a.active {
     color: black !important;
-    font-weight: 600;
+    font-weight: 400;
 }
 
 nav .container .cart a {
@@ -16,7 +16,7 @@ nav .container .cart a {
 }
 
 nav .container .search {
-    padding: 17px 30px;
+    padding: 8px 30px;
     text-align: center;
 }
 
@@ -32,8 +32,6 @@ nav .container .cart .number-of-products {
     background-color: #6c757d;
     color: #fff;
     display: inline-block;
-    /*padding: 0.2rem 1rem;
-    */
     width: 25px;
     height: 25px;
     border-radius: 50%;

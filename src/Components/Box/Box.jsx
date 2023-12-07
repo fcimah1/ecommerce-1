@@ -37,12 +37,15 @@ export default function Box({ id, img, title, desc, price }) {
             let cunrrentProduct = cartValues[i]
             if (check === 1) {
                 setCart([...cart.slice(0, i), { ...cunrrentProduct, countity: +cunrrentProduct.countity + 1 }, ...cart.slice(i + 1)])
-                localStorage.setItem("cart", cart);
+                localStorage.setItem("cart", { cart });
             } else {
                 operationAdd()
+                localStorage.setItem("cart", { cart });
             }
         } else {
             operationAdd()
+            localStorage.setItem("cart", { cart });
+
         }
     }
     return (
@@ -53,26 +56,11 @@ export default function Box({ id, img, title, desc, price }) {
                 <img src={img} className="card-img-top" alt={title} />
                 <div to='/cart'
                     onClick={() => {
-
                         notify();
                         addToCart(id);
-                        // toast("Added Successfully",
-                        //     {
-                        //         type: "success",
-                        //         position: "top-center",
-                        //         autoClose: 1000,
-                        //         hideProgressBar: false,
-                        //         closeOnClick: true,
-                        //         pauseOnHover: true, // pause the toast r
-                        //         draggable: true,
-                        //         progress: undefined,
-                        //     }
-                        // )
                     }
-
                     }
                     className="addCart w-100 ">Add To Cart
-
                 </div>
             </div>
             <div className="card-body">
@@ -80,7 +68,7 @@ export default function Box({ id, img, title, desc, price }) {
                 <p className="card-text">price: ${price} </p>
                 <p className="card-text">{desc.split(" ").slice(1, 6).join(" ")}</p>
                 <div className='d-flex justify-content-between align-items-center'>
-                    <Link to={`/productDetails/${id}`} className="btn btn-primary">Show Details</Link>
+                    <Link to={`/productDetails/${id}`} className="btn-front">Show Details</Link>
                 </div>
             </div>
         </div>

@@ -4,9 +4,9 @@ import Box from '../Components/Box/Box';
 export default function TopRated() {
     const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch('https://dummyjson.com/products')
+        fetch('http://localhost:3000/products')
             .then(res => res.json())
-            .then(data => setProduct(data.products))
+            .then(data => setProduct(data))
     }, [])
     console.log(product);
     return (

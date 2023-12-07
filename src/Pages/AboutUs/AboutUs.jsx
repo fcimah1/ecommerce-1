@@ -1,5 +1,6 @@
-import AboutCards from "../../AboutCards/AboutCards"
-import Employers from "../../Employers/Employers"
+
+import AboutCards from "../../Components/AboutCards/AboutCards"
+import Employers from "../../Components/Employers/Employers"
 import "./about.css"
 export default function AboutUs() {
     return (

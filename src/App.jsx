@@ -1,13 +1,16 @@
 import './App.css';
-import Navbar from './Components/Navbar/Navbar';
-import Home from './Components/Pages/Home/Home';
-import { Route, Routes } from 'react-router-dom';
-import CategoryView from './Components/Pages/Category/CategoryView';
-import SearchResult from './Components/Pages/SearchResult/SearchResult';
-import ProductDetails from './Components/Pages/ProductDetails/ProductDetails';
-import Cart from './Components/Pages/Cart/Cart';
+import { Outlet, Route, Routes } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
-import AboutUs from './Components/Pages/AboutUs/AboutUs';
+import Home from './Pages/Home/Home';
+import CategoryView from './Pages/Category/CategoryView';
+import Navbar from './Components/Navbar/Navbar';
+import ContactUs from './Pages/ContactUs/ContactUs';
+import Cart from './Pages/Cart/Cart';
+import AboutUs from './Pages/AboutUs/AboutUs';
+import ProductDetails from './Pages/ProductDetails/ProductDetails';
+import SearchResult from './Pages/SearchResult/SearchResult';
+import DashboardOfProductView from './Pages/ProductViewDashboard/ProductView';
+import AddProduct from './Components/AddProduct/AddProduct';
 
 
 
@@ -22,6 +25,11 @@ function App() {
         <Route path='productDetails/:productId' element={<ProductDetails />} />
         <Route path='cart' element={<Cart />} />
         <Route path='about' element={<AboutUs />} />
+        <Route path='contact' element={<ContactUs />} />
+        <Route path='products' element={<Outlet />}>
+          <Route path='' element={<DashboardOfProductView />} />
+          <Route path='addProduct' element={<AddProduct/>} />
+        </Route>
       </Routes>
     </>
   );

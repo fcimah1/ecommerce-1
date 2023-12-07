@@ -11,13 +11,13 @@ export default function Navbar() {
     const cart = useRecoilValue(cartDetaials)
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-primary">
+            <nav className="navbar navbar-expand-lg bg-primary bg-opacity-75">
                 <div className="container">
                     <Link className="navbar-brand text-white fw-bold fs-3" to="/">SOUQ.COM</Link>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
-                    <div className="collapse navbar-collapse d-flex align-items-center" id="navbarSupportedContent">
+                    <div className="collapse navbar-collapse  align-items-center" id="navbarSupportedContent">
                         <ul className="navbar-nav m-auto mb-2">
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="/">Home</NavLink>

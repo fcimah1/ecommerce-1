@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import Box from "../../Box/Box";
 import { useParams } from "react-router-dom";
-import '../../Categories/category.css'
+import '../../Components/Categories/category.css'
 import "../Home/home.css"
-import "../../../api/api.json"
+import Box from "../../Components/Box/Box";
+
 
 export default function CategoryView() {
     const { categoryName } = useParams()

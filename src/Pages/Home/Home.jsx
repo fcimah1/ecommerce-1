@@ -1,10 +1,10 @@
-import Box from "../../Box/Box";
 import React, { useEffect, useState } from 'react'
-import Slider from "../../Slider/Slider";
 import './home.css'
-import TopRated from "../../../TopRated/TopRated";
-import NewArrivals from "../../NewArrivals/NewArrivals";
-import SwipperSlides from "../../SwipperSlides/SwipperSlides";
+import Slider from "../../Components/Slider/Slider";
+import Box from '../../Components/Box/Box';
+import TopRated from '../../TopRated/TopRated';
+import NewArrivals from '../../Components/NewArrivals/NewArrivals';
+import SwipperSlides from '../../Components/SwipperSlides/SwipperSlides';
 
 export default function Home() {
     const [product, setProduct] = useState([])

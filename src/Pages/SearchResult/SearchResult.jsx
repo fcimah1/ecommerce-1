@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
-import Box from "../../Box/Box"
+import Box from "../../Components/Box/Box"
 
 export default function SearchResult() {
     const { value } = useParams()
     const [data, setData] = useState([])
     useEffect(() => {
-        fetch(`https://dummyjson.com/products/search?q=${value}`)
+        fetch(`http://localhost:3000/products/search?q=${value}`)
             .then(res => res.json())
             .then(productData => setData(productData.products));
     }, [value])

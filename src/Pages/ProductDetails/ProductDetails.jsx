@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { useRecoilState, useRecoilValue } from "recoil";
-import cartDetaials from "../../../Atoms/Cart.atom";
 import './productDetails.css'
+import cartDetaials from "../../Atoms/Cart.atom";
 
 
 export default function ProductDetails({ id, img, title, desc, price }) {
     const { productId } = useParams()
     const [product, setProduct] = useState([])
     useEffect(() => {
-        fetch(`https://dummyjson.com/products/${productId}`)
+        fetch(`http://localhost:3000/products/${productId}`)
             .then(res => res.json())
             .then(data => setProduct(data));
     }, [productId])
@@ -56,7 +56,7 @@ export default function ProductDetails({ id, img, title, desc, price }) {
                 <div className="row">
                     <div className="col-md-12 col-lg-5">
                         <div className="img">
-                            <img className="current-image" ref={imgSrcOfficial} src={ product?.thumbnail} alt={product.title} />
+                            <img className="current-image" ref={imgSrcOfficial} src={product?.thumbnail} alt={product.title} />
                         </div>
                         <div className="allImages">
                             {product?.images?.map(
@@ -77,7 +77,7 @@ export default function ProductDetails({ id, img, title, desc, price }) {
                         <p>Discount: {product?.discountPercentage} %</p>
                         <p>Rating: {product?.rating} of 5</p>
                         <p>Description: {product?.description}</p>
-                        <Link to="/cart" onClick={() => addToCart(product.id)} className="btn btn-primary">Add To Cart</Link>
+                        <Link to="/cart" onClick={() => addToCart(product.id)} className="btn-front btn btn-primary">Add To Cart</Link>
                     </div>
                 </div>
             </div>
